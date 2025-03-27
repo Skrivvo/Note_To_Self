@@ -1,24 +1,25 @@
 import streamlit as st
 import datetime
 
-# Function to get mood-based theme
-def get_theme(mood):
+# Function to get theme based on user's choice
+def get_theme(theme):
     themes = {
-        "Happy": "#FFD700",  # Gold
-        "Sad": "#4682B4",  # Steel Blue
-        "Neutral": "#808080",  # Gray
-        "Excited": "#FF4500",  # Orange Red
-        "Relaxed": "#98FB98"  # Pale Green
+        "Spring Blossom": "#FFB6C1",  # Light Pink
+        "Summer Vibes": "#FFD700",  # Gold
+        "Autumn Glow": "#FF8C00",  # Dark Orange
+        "Winter Wonderland": "#ADD8E6"  # Light Blue
     }
-    return themes.get(mood, "#FFFFFF")
+    return themes.get(theme, "#FFFFFF")
 
-# Ask for user's mood
-st.title("Digital Journal")
-st.subheader("How are you feeling today?")
-user_mood = st.selectbox("Select your mood:", ["Happy", "Sad", "Neutral", "Excited", "Relaxed"])
+# App Title
+st.title("📖 Digital Journal")
 
-# Apply theme based on mood
-theme_color = get_theme(user_mood)
+# Ask user to choose a theme
+st.subheader("🎨 Choose Your Theme")
+user_theme = st.selectbox("Select a seasonal theme:", ["Spring Blossom", "Summer Vibes", "Autumn Glow", "Winter Wonderland"])
+
+# Apply theme
+theme_color = get_theme(user_theme)
 st.markdown(f"""
     <style>
         .main {{
@@ -28,7 +29,7 @@ st.markdown(f"""
 """, unsafe_allow_html=True)
 
 # Journal Sections
-st.header("📖 My Digital Journal")
+st.header("📝 My Digital Journal")
 
 # Mood Tracker
 st.subheader("😊 Mood Tracker")
@@ -82,4 +83,4 @@ st.date_input("Select a date:", datetime.date.today())
 st.subheader("🌟 Positive Affirmations")
 st.text_area("Write affirmations for yourself:")
 
-st.success("Your journal is saved! Keep coming back to reflect and grow.")
+st.success("✅ Your journal is saved! Keep coming back to reflect and grow.")
